@@ -1,7 +1,9 @@
 import { IoTimeOutline } from "react-icons/io5";
 import { AiOutlineFire } from "react-icons/ai";
 import PropTypes from 'prop-types';
-const Blog = ({ blog }) => {
+
+
+const Blog = ({ blog, handleAddTOBookmark }) => {
     console.log(blog);
     const { recipe_image, recipe_name, short_description, ingredients, preparing_time, calories } = blog;
     return (
@@ -26,12 +28,13 @@ const Blog = ({ blog }) => {
                     <p className="flex gap-2 items-center pl-2 text-[#282828cc]"><span><IoTimeOutline className="text-xl" /></span>{preparing_time}</p>
                     <p className="flex gap-2 items-center pl-2 text-[#282828cc]"><span><AiOutlineFire className="text-xl" /></span>{calories}</p>
                 </div>
-                <button className="px-4 py-2 bg-[#0BE58A] rounded-xl">Want to Cook</button>
+                <button onClick={()=> handleAddTOBookmark(blog)} className="px-4 py-2 bg-[#0BE58A] rounded-xl">Want to Cook</button>
             </div>
         </div>
     );
 };
 Blog.propTypes = {
-    blog: PropTypes.object.isRequired
+    blog: PropTypes.object.isRequired,
+    handleAddTOBookmark: PropTypes.func
 }
 export default Blog;
